@@ -65,7 +65,7 @@ By this point you may have already found the correct JMP ESP address. However, i
 At this point you will have the base address of the stack or return address (EBP). We need to convert this address to little-endian format to use it in our code. We need to convert this address to little-endian format to use it in our code. Just invert the bytes to perform this conversion:
 
 ```
-0x080416BF to "\xBF\x16\x04\x08"
+0x080416BF  <->  "\xBF\x16\x04\x08"
 ```
  
  
