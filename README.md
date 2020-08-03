@@ -2,13 +2,13 @@
 
 The exploitation of the stack buffer overflow in the OSCP exam stil based on Windows 32-bit systems (march 2020 update).
 
-In this cheat sheet we will use dostackbufferoverflowgod as a vulnerable application in our exploration process (more info here: https://github.com/justinsteven/dostackbufferoverflowgood).
+In this cheat sheet we will use `dostackbufferoverflowgod` as a vulnerable application in our exploration process (more info here: https://github.com/justinsteven/dostackbufferoverflowgood).
 
 The binary can be downloaded here: https://github.com/justinsteven/dostackbufferoverflowgood/blob/master/dostackbufferoverflowgood.exe
 
 Below are the download links for all the tools needed for the study:
 
-- Windows 7 Evaluation: https://gist.github.com/anonymous/c644cac9d77e2793742c13cf10d26cb8
+- Windows 7 Evaluation: https://gist.github.com/anonymous/c644cac9d77e2793742c13cf10d26cb8 (you can run on Windows 10 too)
 - Immunity Debugger: https://www.immunityinc.com/products/debugger/
 - Mona.py: https://github.com/corelan/mona
 
@@ -21,9 +21,12 @@ We will run the `connect.py` script to verify the application's response.
 
 After this step, we will run the `fuzzing.py` script to identify the point that the application will crack. But before that, on your Windows, attach the application to the Immunity Debugger.
 
+Change the amount of "A" in the script until the application crash
+
+
 ## Offset
 
-After finding the crash point of the application, we will identify the offset to the EIP address. For this we will generate a string of strings with the pattern_create, from the MSF suite
+After finding the crash point of the application, we will identify the offset to the EIP address. For this we will generate a string with the pattern_create, from the MSF suite
 
 ```
 msf-pattern_create -l 1024
@@ -62,7 +65,7 @@ Run `!mona jmp -r esp -cpb "\x00\x0a"` to identify which pointers do not have th
 
 By this point you may have already found the correct JMP ESP address. However, if you want to check, run `!mona find -s "\xff\xe4" -m dostackbufferoverflowgood.exe` directly on the identified vulnerable module.
 
-At this point you will have the base address of the stack or return address (EBP). We need to convert this address to little-endian format to use it in our code. We need to convert this address to little-endian format to use it in our code. Just invert the bytes to perform this conversion:
+At this point you will have the base address of the stack or return address (EBP). We need to convert this address to little-endian format to use it in our code. Just invert the bytes to perform this conversion:
 
 ```
 0x080416BF  <->  "\xBF\x16\x04\x08"
