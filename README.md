@@ -1,6 +1,6 @@
 # OSCP Buffer Overflow Cheat Sheet
 
-The exploitation of the stack buffer overflow in the OSCP exam is based on Windows 32-bit systems.
+The exploitation of the stack buffer overflow in the OSCP exam stil based on Windows 32-bit systems (march 2020 update).
 
 In this cheat sheet we will use dostackbufferoverflowgod as a vulnerable application in our exploration process (more info here: https://github.com/justinsteven/dostackbufferoverflowgood).
 
