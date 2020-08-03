@@ -19,9 +19,9 @@ All installation processes are described in the links above.
 
 We will run the `connect.py` script to verify the application's response.
 
-After this step, we will run the `fuzzing.py` script to identify the point that the application will crack. But before that, on your Windows, attach the application to the Immunity Debugger.
+After this step, we will run the `fuzzing.py` script to identify the point that the application will crash. But before that, on your Windows, attach the application to the Immunity Debugger.
 
-Change the amount of "A" in the script until the application crash
+Change the amount of "A" in the script until the application broken.
 
 
 ## Offset
